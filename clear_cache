@@ -1,0 +1,18 @@
+SSSD stores its cache files in the /var/lib/sss/db/ directory.
+
+While using the sss_cache command is preferable, it is also possible to clear the cache by simply deleting the corresponding cache files.
+
+Before doing this it is suggested that the SSSD service be stopped.
+
+systemctl stop sssd
+
+rm -rf /var/lib/sss/db/*
+
+systemctl restart sssd
+
+You acn also use cleared with the sss_cache utility
+The -E flag can be used to invalidate all cached entries, with the exception of sudo rules
+
+sss_cache -E
+
+sss_cache -u user1
